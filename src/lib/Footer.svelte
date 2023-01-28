@@ -28,7 +28,7 @@
 				fill="var(--fg)"
 			/>
 		</svg>
-		<a target="_blank" href="https://github.com/Rich-Harris/sveltekit-on-the-edge">Source</a>
+		<a target="_blank" href="https://github.com/dferber90/sveltekit-on-the-edge-with-edge-config">Source</a>
 	</p>
 </footer>
 

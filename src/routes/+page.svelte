@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@vercel" />
 	<meta name="twitter:creator" content="@sveltejs" />
-	<meta name="twitter:title" content="SvelteKit on the edge" />
+	<meta name="twitter:title" content="SvelteKit on the edge with Edge Config" />
 	<meta name="twitter:description" content="HTML, dynamically rendered in a city near you" />
 	<meta name="twitter:image" content="{$page.url.origin}{card}" />
 	<meta name="twitter:image:alt" content="The Vercel and Svelte logos" />
@@ -29,8 +29,17 @@
 	<div class="info">
 		<div class="block">
 			<div class="contents">
-				<span>Greeting</span>
-				<strong>{data.greeting}</strong>
+				{#if data.greeting === null}
+					<div class="error">
+						<strong>Could not load greeting from Edge Config</strong>
+						Ensure you have an environment variable called EDGE_CONFIG holding a valid connection string.
+						<br />
+						Ensure your Edge Config has an item called <i>svelte_greeting</i>.
+					</div>
+				{:else}
+					<span>Greeting</span>
+					<strong>{data.greeting}</strong>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -77,6 +86,11 @@
 		padding: 0 2.5rem;
 		font-size: min(5vw, 2rem);
 		box-sizing: border-box;
+	}
+
+	.error {
+		text-transform: none;
+		color: #fc512f;
 	}
 
 	.block {
