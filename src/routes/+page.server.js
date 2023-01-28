@@ -1,11 +1,13 @@
 import { dev } from '$app/environment';
+import { createClient } from '@vercel/edge-config';
+import { EDGE_CONFIG } from '$env/static/private';
 
 export const csr = dev;
 
-/** @type {import('./$types').PageServerLoad} */
-export function load(event) {
-	return {
-		ip: event.getClientAddress(),
-		city: decodeURIComponent(/** @type {string} */ (event.request.headers.get('x-vercel-ip-city')))
-	};
+const edgeConfig = createClient(EDGE_CONFIG);
+
+/** @type {import('@sveltejs/kit').Load} */
+export async function load() {
+	const greeting = await edgeConfig.get('svelte_greeting');
+	return { greeting };
 }

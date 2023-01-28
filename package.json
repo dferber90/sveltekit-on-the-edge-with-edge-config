@@ -21,5 +21,8 @@
 		"typescript": "~4.6.2",
 		"vite": "latest"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@vercel/edge-config": "^0.1.1"
+	}
 }

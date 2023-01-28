@@ -29,14 +29,8 @@
 	<div class="info">
 		<div class="block">
 			<div class="contents">
-				<span>Your city</span>
-				<strong>{data.city}</strong>
-			</div>
-		</div>
-		<div class="block">
-			<div class="contents">
-				<span>Your IP address</span>
-				<strong>{data.ip}</strong>
+				<span>Greeting</span>
+				<strong>{data.greeting}</strong>
 			</div>
 		</div>
 	</div>
